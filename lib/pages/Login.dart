@@ -37,13 +37,18 @@ class Login extends StatelessWidget {
                   Text("Not a member yet! Register here"),
                   Spacer(),
                   RaisedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       String userData = json.encode(
                         {
                           "phone":_phoneController.text,
                         "password":_passwordController.text
                         });
-                      Api.loginUser(userData);
+                      bool bol = await Api.loginUser(userData);
+                      if(bol){
+                        Navigator.pop(context);
+                      }else{
+                        print("Login Fail!");
+                      }
                     },
                     child: Text("Login"),
                   )
