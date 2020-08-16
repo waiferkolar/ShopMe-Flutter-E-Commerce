@@ -41,7 +41,9 @@ class Global {
       }
     }
   }
-
+  static hehe(){
+    
+  }
   static removeCountToCart(ProductModel product) {
     for (ProductModel pModel in orderList) {
       if (pModel == product) {
