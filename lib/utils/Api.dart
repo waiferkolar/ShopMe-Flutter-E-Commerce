@@ -31,12 +31,12 @@ class Api {
     return Global.shopList.length > 0;
   }
 
-  static Future<List<ProductModel>> loadProduct(){
-      if(Global.currentType == "category"){
-        return getCategoryProduct();
-      }else{
-        return getShopProduct();
-      }
+  static Future<List<ProductModel>> loadProduct() {
+    if (Global.currentType == "category") {
+      return getCategoryProduct();
+    } else {
+      return getShopProduct();
+    }
   }
 
   static Future<List<ProductModel>> getCategoryProduct() async {
@@ -54,7 +54,7 @@ class Api {
     Global.productList.addAll(ls);
     return Global.productList;
   }
-  
+
   static Future<List<ProductModel>> getShopProduct() async {
     var url = "${Global.BASE_URL}/api/product/by/category";
     var jsonEcodeData = json.encode({
@@ -71,23 +71,30 @@ class Api {
     return Global.productList;
   }
 
-  static Future<bool> uploadOrder(){
-      print("Order Update");
-      return null;
+  static Future<bool> uploadOrder() {
+    print("Order Update");
+    return null;
   }
 
-  static Future<bool> loginUser(String userData)async {
-      var url = "${Global.BASE_URL}/api/login";
-      var response = await http.post(url,body: userData,headers: Global.headers);
-      dynamic data = jsonDecode(response.body);
-      if(data["con"]){
-        Global.user = UserModel.fromJson(data["user"]);
-        print(Global.user.name);
-        return true;
-      }else{
-        return false;
-      }
-
+  static Future<bool> loginUser(String userData) async {
+    var url = "${Global.BASE_URL}/api/login";
+    var response =
+        await http.post(url, body: userData, headers: Global.headers);
+    dynamic data = jsonDecode(response.body);
+    if (data["con"]) {
+      Global.user = UserModel.fromJson(data["user"]);
+      print(Global.user.name);
+      return true;
+    } else {
+      return false;
+    }
   }
 
+  static Future<bool> registerUser(String userData) async {
+    var url = "${Global.BASE_URL}/api/register";
+    var response =
+        await http.post(url, body: userData, headers: Global.headers);
+    dynamic data = jsonDecode(response.body);
+    return data['con'];
+  }
 }

@@ -34,7 +34,10 @@ class Login extends StatelessWidget {
                       ))),
               Row(
                 children: [
-                  Text("Not a member yet! Register here"),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, "/register"),
+                    child:Text("Not a member yet! Register here")
+                  ),
                   Spacer(),
                   RaisedButton(
                     onPressed: () async {
