@@ -24,6 +24,12 @@ class Global {
 
   static Map<String, String> headers = {"content-type": "application/json"};
 
+    static Map<String, String> tokenHeader = {
+      "content-type": "application/json",
+      "Authorization": "Bearer ${user.token}"
+      };
+
+
   static addToCart(ProductModel product) {
     var existingItem = orderList
         .firstWhere((element) => element.id == product.id, orElse: () => null);

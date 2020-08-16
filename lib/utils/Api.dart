@@ -7,6 +7,9 @@ import 'package:heynow/models/UserModel.dart';
 import 'package:heynow/utils/Global.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/ProductModel.dart';
+import 'Global.dart';
+
 class Api {
   static Future<bool> getAllCategory() async {
     var url = "${Global.BASE_URL}/api/category/all";
@@ -71,9 +74,27 @@ class Api {
     return Global.productList;
   }
 
-  static Future<bool> uploadOrder() {
-    print("Order Update");
-    return null;
+  static Future<bool> uploadOrder() async {
+    List<Map> list = List();
+    for (ProductModel pModel in Global.orderList) {
+      var map = new Map();
+      map["productId"] = pModel.id;
+      map["price"] = pModel.price;
+      map["count"] = pModel.count;
+      list.add(map);
+    }
+    print(Global.user.token);
+    var uploadData = json.encode(list);
+    var url = "${Global.BASE_URL}/api/order";
+    var response =
+        await http.post(url, body: uploadData, headers: Global.tokenHeader);
+    dynamic data = jsonDecode(response.body);
+    if (data['con']) {
+      Global.orderList.removeRange(0, Global.orderList.length);
+      return true;
+    } else {
+      return true;
+    }
   }
 
   static Future<bool> loginUser(String userData) async {
