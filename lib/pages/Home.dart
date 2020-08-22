@@ -11,7 +11,19 @@ class Home extends StatelessWidget {
     print(Global.shopList.length);
     return CustomScrollView(
       slivers: [
-        SliverAppBar(title: Text("Home")),
+        SliverAppBar(
+          title: Text("Home"),
+          actions: [
+            IconButton(
+              onPressed: ()=> Navigator.pushNamed(context, "/vp"),
+              icon: Icon(Icons.pages),
+            ),
+            IconButton(
+              onPressed: ()=> Navigator.pushNamed(context, "/sl"),
+              icon: Icon(Icons.local_dining),
+            )
+          ],
+          ),
         SliverToBoxAdapter(
           child: Column(
             children: [
