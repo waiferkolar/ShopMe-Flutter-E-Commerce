@@ -21,6 +21,10 @@ class Home extends StatelessWidget {
             IconButton(
               onPressed: ()=> Navigator.pushNamed(context, "/sl"),
               icon: Icon(Icons.local_dining),
+            ),
+            IconButton(
+              onPressed: ()=> Navigator.pushNamed(context, "/chat"),
+              icon: Icon(Icons.chat),
             )
           ],
           ),

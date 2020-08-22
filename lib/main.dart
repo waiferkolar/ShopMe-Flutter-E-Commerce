@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heynow/pages/Chat.dart';
 import 'package:heynow/pages/Flash.dart';
 import 'package:heynow/pages/Home.dart';
 import 'package:heynow/pages/Login.dart';
@@ -20,6 +21,7 @@ void main() {
       "/register":(context)=> Register(),
       "/vp":(context)=> Vp(),
       "/sl":(context)=> SL(),
+      "/chat":(context)=> Chat(),
     },
   ));
 }
