@@ -44,7 +44,9 @@ class MessageModel extends StatelessWidget {
             child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Stack(children: [
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
                 Image(
                   alignment: Alignment.centerRight,
                   image: AssetImage("out.png"),

@@ -23,7 +23,14 @@ class Home extends StatelessWidget {
               icon: Icon(Icons.local_dining),
             ),
             IconButton(
-              onPressed: ()=> Navigator.pushNamed(context, "/chat"),
+              onPressed: (){
+                if(Global.user == null){
+                  Navigator.pushNamed(context, "/login");
+                }else{
+                  Navigator.pushNamed(context, "/chat");
+                }
+                
+              },
               icon: Icon(Icons.chat),
             )
           ],

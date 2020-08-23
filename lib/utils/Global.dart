@@ -5,6 +5,7 @@ import 'package:heynow/models/UserModel.dart';
 
 class Global {
   static const String BASE_URL = "http://54.179.1.90:3000";
+
   static const String marketId = "5f0949f6c5afbd05fe52d031";
   static List<CategoryModel> categoryList = List<CategoryModel>();
   static List<ShopModel> shopList = List<ShopModel>();
@@ -13,6 +14,7 @@ class Global {
   static String currentType = "";
   static CategoryModel currentCategory;
   static UserModel user;
+  static String SOCKET_ENDPOINT = BASE_URL + "/coder?token=${user.token}";
   static final List<String> imgList = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
     'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
@@ -24,11 +26,10 @@ class Global {
 
   static Map<String, String> headers = {"content-type": "application/json"};
 
-    static Map<String, String> tokenHeader = {
-      "content-type": "application/json",
-      "Authorization": "Bearer ${user.token}"
-      };
-
+  static Map<String, String> tokenHeader = {
+    "content-type": "application/json",
+    "Authorization": "Bearer ${user.token}"
+  };
 
   static addToCart(ProductModel product) {
     var existingItem = orderList
@@ -47,9 +48,8 @@ class Global {
       }
     }
   }
-  static hehe(){
-    
-  }
+
+  static hehe() {}
   static removeCountToCart(ProductModel product) {
     for (ProductModel pModel in orderList) {
       if (pModel == product) {
